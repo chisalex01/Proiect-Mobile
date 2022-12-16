@@ -1,0 +1,66 @@
+<div>
+  Name:
+  <input type="text" [(ngModel)]="person.name" />
+</div>
+
+<br />
+
+<div>
+  Date of birth:
+  <input type="date" [(ngModel)]="person.dob" />
+</div>
+
+<br />
+
+<div>
+  Job:
+  <input type="text" [(ngModel)]="person.job" />
+</div>
+
+<br />
+
+<div>
+  Gender:
+
+  <input
+    type="radio"
+    [(ngModel)]="person.gender"
+    value="M"
+    name="gender"
+    id="genderMale"
+  />
+  <label for="genderMale">Male</label>
+
+  <input
+    type="radio"
+    [(ngModel)]="person.gender"
+    value="F"
+    name="gender"
+    id="genderFemale"
+  />
+  <label for="genderFemale">Female</label>
+
+  <input
+    type="radio"
+    [(ngModel)]="person.gender"
+    value=""
+    name="gender"
+    id="genderNotSet"
+  />
+  <label for="genderNotSet">Not set</label>
+</div>
+
+<br />
+
+<button (click)="save()">Save</button>
+<button (click)="clearForm()">Clear</button>
+
+<div style="margin-top: 10px;">
+  <div *ngFor="let person of personsService.persons" style="margin-top: 5px;">
+    {{ person.name }}, {{ person.dob | date: 'MMM. dd, yyyy' }},
+    {{ person.job }}, {{ person.gender | gender }}
+
+    <button (click)="edit()">Edit</button>
+    <button (click)="delete()">Delete</button>
+  </div>
+</div>
